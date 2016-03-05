@@ -1,12 +1,12 @@
 package id.ac.unsyiah.informatika.formulirsederhana;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -42,7 +42,8 @@ public class MainActivity extends AppCompatActivity {
         edit text jadi kosong
         */
 
-        btnSimpan.setOnClickListener(new View.OnClickListener() {
+
+        /*btnSimpan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String data = "Nama : " + edtNama.getText() + "\nNim : "
@@ -55,6 +56,26 @@ public class MainActivity extends AppCompatActivity {
                 edtNim.setText("");
                 edtHp.setText("");
                 edtAlamat.setText("");
+            }
+        });*/
+
+
+        /*
+        kasus 2 :
+        isi semua field,
+        klik tombol,
+        kirim data ke activity lain,
+        */
+
+        btnSimpan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(MainActivity.this, DataActivity.class);
+                i.putExtra("Nama", edtNama.getText().toString());
+                i.putExtra("Nim", edtNim.getText().toString());
+                i.putExtra("Hp", edtHp.getText().toString());
+                i.putExtra("Alamat", edtAlamat.getText().toString());
+                startActivity(i);
             }
         });
     }
