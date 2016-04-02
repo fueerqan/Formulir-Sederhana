@@ -3,10 +3,14 @@ package id.ac.unsyiah.informatika.formulirsederhana;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -78,5 +82,31 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_utama, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        int id = item.getItemId();
+
+        switch (id){
+            case R.id.pindah:
+                Toast.makeText(MainActivity.this, "Tombol Pindah di klik", Toast.LENGTH_SHORT).show();
+                Intent in = new Intent(getBaseContext(), NavDraw.class);
+                startActivity(in);
+                break;
+            case R.id.exit :
+                finish();
+                break;
+        }
+
+        return true;
     }
 }

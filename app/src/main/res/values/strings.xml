@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">Formulir Sederhana</string>
+    <string name="nama">Nama</string>
+    <string name="hint_nama">Masukkan Nama</string>
+    <string name="nim">NIM</string>
+    <string name="hint_nim">Masukkan NIM</string>
+    <string name="hp">No. Hp</string>
+    <string name="hint_hp">Masukkan Nomor HP</string>
+    <string name="alamat">Alamat</string>
+    <string name="hint_alamat">Masukkan Alamat</string>
+    <string name="btn_simpan">Simpan</string>
+    <string name="title_activity_nav_draw">NavDraw</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+</resources>
