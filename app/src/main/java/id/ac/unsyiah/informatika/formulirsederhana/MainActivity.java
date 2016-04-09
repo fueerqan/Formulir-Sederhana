@@ -12,12 +12,19 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import id.ac.unsyiah.informatika.formulirsederhana.Database.DataMahasiswa;
+import id.ac.unsyiah.informatika.formulirsederhana.POJO.Mahasiswa;
+
 public class MainActivity extends AppCompatActivity {
+
+    private DataMahasiswa db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        db = new DataMahasiswa(MainActivity.this);
 
         /*buat objeknya*/
         final TextView txtNama, txtNim, txtHp, txtAlamat;
@@ -71,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
         kirim data ke activity lain,
         */
 
-        btnSimpan.setOnClickListener(new View.OnClickListener() {
+/*        btnSimpan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(MainActivity.this, DataActivity.class);
@@ -80,6 +87,26 @@ public class MainActivity extends AppCompatActivity {
                 i.putExtra("Hp", edtHp.getText().toString());
                 i.putExtra("Alamat", edtAlamat.getText().toString());
                 startActivity(i);
+            }
+        });*/
+
+        /*
+            Kasus 3 :
+            Data disimpan ke database
+         */
+        btnSimpan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Mahasiswa mhs = new Mahasiswa();
+                mhs.setNama(edtNama.getText().toString());
+                mhs.setNim(edtNim.getText().toString());
+                mhs.setAlamat(edtAlamat.getText().toString());
+                mhs.setHp(edtHp.getText().toString());
+
+                db.open();
+                db.tambahMahasiswa(mhs);
+                db.close();
+                Toast.makeText(MainActivity.this, "Data telah disimpan ke Database", Toast.LENGTH_SHORT).show();
             }
         });
     }
